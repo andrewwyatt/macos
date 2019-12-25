@@ -1,0 +1,12 @@
+###
+### A Simple list of brew that will be read by the install script, and
+### installed.
+###
+
+bash
+mas
+neofetch
+sdl2
+tree
+watch
+wget

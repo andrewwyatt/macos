@@ -1,0 +1,11 @@
+###
+### Sets the prompt to my personal preference.
+###
+
+if [ -e "${BASEPATH}/common/data/prompts" ]
+then
+  echo "Configuring prompt"
+  sudo cp ${BASEPATH}/common/data/prompts /etc/prompts
+  sudo ln -s /etc/prompts /etc/bashrc_iTerm.app
+  sudo ln -s /etc/prompts /etc/zshrc_iTerm.app
+fi

@@ -1,0 +1,25 @@
+###
+### Configures iTerm2 to my preferences
+###
+
+open -g "/Applications/iTerm.app"
+while true
+do
+echo testing
+  sleep 2
+  if [ -e "${HOME}/Library/Preferences/com.googlecode.iterm2.plist" ]
+  then
+    break
+  fi
+done
+killall iTerm2
+
+defaults write com.googlecode.iterm2 PromptOnQuit -bool false
+defaults write com.googlecode.iterm2 SUEnableAutomaticChecks -bool true
+defaults write com.googlecode.iterm2 QuitWhenAllWindowsClosed -bool true
+
+/usr/libexec/PlistBuddy -c "Set 'New Bookmarks':0:'Normal Font' New 24" ~/Library/Preferences/com.googlecode.iTerm2.plist
+/usr/libexec/PlistBuddy -c "Set 'New Bookmarks':0:'Non Ascii Font' New 24" ~/Library/Preferences/com.googlecode.iTerm2.plist
+
+defaults write com.googlecode.iterm2 ShowFullScreenTabBar -bool true
+defaults write com.googlecode.iterm2 SmartPlacement -bool true

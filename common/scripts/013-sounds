@@ -1,0 +1,10 @@
+###
+### I shouldn't like the chimes, but I do.
+###
+
+echo "Chime when charging"
+defaults write com.apple.PowerChime ChimeOnAllHardware -bool true
+open /System/Library/CoreServices/PowerChime.app
+
+echo "Enabling the boot chime"
+sudo nvram SystemAudioVolume=50

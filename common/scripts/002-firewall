@@ -1,0 +1,6 @@
+###
+### Enables the local firewall
+###
+
+echo "Enabling the firewall"
+sudo /usr/libexec/ApplicationFirewall/socketfilterfw --setglobalstate on

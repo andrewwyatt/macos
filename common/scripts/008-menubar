@@ -1,0 +1,16 @@
+###
+### Configures the menu bar extras that I like to have, and sets the battery
+### percentage to display.
+###
+
+echo "Configuring Menu Extras"
+defaults write com.apple.systemuiserver menuExtras -array     \
+  "/System/Library/CoreServices/Menu Extras/Bluetooth.menu"   \
+  "/System/Library/CoreServices/Menu Extras/Battery.menu"     \
+  "/System/Library/CoreServices/Menu Extras/TimeMachine.menu" \
+  "/System/Library/CoreServices/Menu Extras/Volume.menu"      \
+  "/System/Library/CoreServices/Menu Extras/Clock.menu"
+
+defaults write com.apple.menuextra.battery ShowPercent -string "YES"
+
+killall SystemUIServer

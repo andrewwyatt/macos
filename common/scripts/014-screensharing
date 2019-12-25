@@ -1,0 +1,5 @@
+###
+### Link Screen Sharing to /Applications
+###
+
+sudo ln -s "/System/Library/CoreServices/Applications/Screen Sharing.app" /Applications/Utilities

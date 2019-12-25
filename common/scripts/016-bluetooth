@@ -1,0 +1,11 @@
+###
+### Fix bluetooth audio defaults to reduce stutter
+###
+
+defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Max (editable)" 64
+defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" 40
+defaults write com.apple.BluetoothAudioAgent "Apple Initial Bitpool (editable)" 64
+defaults write com.apple.BluetoothAudioAgent "Apple Initial Bitpool Min (editable)" 40
+defaults write com.apple.BluetoothAudioAgent "Negotiated Bitpool" 64
+defaults write com.apple.BluetoothAudioAgent "Negotiated Bitpool Max" 64
+defaults write com.apple.BluetoothAudioAgent "Negotiated Bitpool Min" 40

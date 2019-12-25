@@ -1,0 +1,23 @@
+###
+### A Simple list of casks that will be read by the install script, and
+### installed.
+###
+
+atom
+daisydisk
+discord
+drawio
+gimp
+google-chrome
+iina
+iterm2
+keepassxc
+keka
+musicbrainz-picard
+skype
+slack
+steam
+tunnelblick
+typora
+vanilla
+vlc

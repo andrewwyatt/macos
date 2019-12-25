@@ -1,0 +1,6 @@
+###
+### I don't use iCloud for documents; I use OneDrive, so turn this off.
+###
+
+echo "Disabling save to cloud"
+defaults write -g NSDocumentSaveNewDocumentsToCloud -bool false

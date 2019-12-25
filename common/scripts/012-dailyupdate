@@ -1,0 +1,6 @@
+###
+### I prefer the system check for updates daily rather than weekly.
+###
+
+echo "Configuring software update check to daily"
+defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1

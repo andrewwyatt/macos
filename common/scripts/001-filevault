@@ -1,0 +1,6 @@
+###
+### Enables FileVault on the system.
+###
+
+echo "Enabling FileVault"
+sudo fdesetup enable

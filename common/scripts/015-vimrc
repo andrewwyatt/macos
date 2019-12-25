@@ -1,0 +1,9 @@
+###
+### Sets the few things that I set in .vimrc.
+###
+
+if [ -e "${BASEPATH}/common/data/vimrc" ]
+then
+  echo "Configuring ${HOME}/.vimrc"
+  sudo cp ${BASEPATH}/common/data/vimrc ${HOME}/.vimrc
+fi

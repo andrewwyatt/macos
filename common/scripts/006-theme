@@ -1,0 +1,36 @@
+###
+### Enable darkmode?
+###
+
+if [ ! "${DARKMODE}" ]
+then
+  DARKMODE="true"
+fi
+
+if [ DARKMODE = "false" ]
+then
+  WALLPAPER="Wallpaper.jpg"
+else
+  WALLPAPER="Wallpaper2.jpg"
+fi
+
+###
+### Set the theme..
+###
+
+echo "Setting theme.."
+osascript -e "
+tell application id \"com.apple.systemevents\"
+  tell appearance preferences
+    set dark mode to ${DARKMODE}
+  end tell
+end tell
+"
+
+###
+### Configures my favorite wallpaper, which is a photo that I took at Lido Key in 2016.
+###
+
+echo "Setting the wallpaper.."
+cp ${BASEPATH}/common/data/${WALLPAPER} ${HOME}/Pictures
+osascript -e "tell application \"Finder\" to set desktop picture to POSIX file \"${HOME}/Pictures/${WALLPAPER}\""

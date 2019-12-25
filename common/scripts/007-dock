@@ -1,0 +1,18 @@
+###
+### Shift the dock to the left.
+###
+
+echo "Configuring dock.."
+defaults write com.apple.dock orientation -string "left"
+defaults write com.apple.dock magnification -bool true
+#defaults write com.apple.dock autohide -bool true
+#defaults write com.apple.dock autohide-delay -float 0
+#defaults write com.apple.dock autohide-time-modifier -float 0.5
+
+###
+### Reset Launchpad to sort apps
+###
+
+defaults write com.apple.dock ResetLaunchPad -bool true
+
+killall Dock

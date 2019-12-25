@@ -1,0 +1,10 @@
+###
+### Installs my favorite ANSI font, and sets up rendering and HiDPI.
+###
+
+echo "Setting up fonts"
+cp ${BASEPATH}/common/data/fonts/*.ttf ${HOME}/Library/fonts
+
+echo "Enable subpixel font rendering and HiDPI display modes"
+defaults write NSGlobalDomain AppleFontSmoothing -int 1
+sudo defaults write /Library/Preferences/com.apple.windowserver DisplayResolutionEnabled -bool true

@@ -1,0 +1,2 @@
+grep -v /usr/local/bin/bash /etc/shells 2>&1 >/dev/null || echo "/usr/local/bin/bash" | sudo tee -a /etc/shells
+sudo chsh -s /usr/local/bin/bash ${USER}
