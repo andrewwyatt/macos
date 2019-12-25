@@ -9,7 +9,7 @@ export BASEPATH=$(pwd)
 
 if [ ! $1 ]
 then
-  export INSTALLTYPE="personal"
+  export INSTALLTYPE="common"
 else
   echo "Installing $1"
   export INSTALLTYPE="$1"
