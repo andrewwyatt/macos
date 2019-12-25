@@ -7,12 +7,7 @@ then
   DARKMODE="true"
 fi
 
-if [ DARKMODE = "false" ]
-then
-  WALLPAPER="Wallpaper.jpg"
-else
-  WALLPAPER="Wallpaper2.jpg"
-fi
+WALLPAPER="wallpaper.jpg"
 
 ###
 ### Set the theme..
@@ -28,7 +23,7 @@ end tell
 "
 
 ###
-### Configures my favorite wallpaper, which is a photo that I took at Lido Key in 2016.
+### Configures one of my favorite wallpapers, a photo that I took at Lido Key in 2016.
 ###
 
 echo "Setting the wallpaper.."
