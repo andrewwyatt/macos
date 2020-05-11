@@ -2,7 +2,5 @@
 ### Configures iTerm2 to my preferences
 ###
 
-if [ ! -e "${HOME}/Library/Preferences/com.googlecode.iterm2.plist" ]
-then
-  cp common/data/com.googlecode.iterm2.plist ${HOME}/Library/Preferences
-fi
+### Always reset the preferences.
+cp common/data/com.googlecode.iterm2.plist ${HOME}/Library/Preferences
