@@ -48,28 +48,46 @@ do
   if [ -e "${BASEPATH}/${KIND}/applists/casks" ]
   then
     echo "Installing ${KIND} casks.."
-    for CASK in $(cat ${BASEPATH}/${KIND}/applists/casks | awk '{print $1}' | grep ^[A-z0-9])
+    for CASK in $(cat ${BASEPATH}/${KIND}/applists/casks | awk '/^[A-z0-9]/ {printf $1" "}')
     do
-        brew cask install --appdir="/Applications" ${CASK}
+        brew cask list | grep ${CASK} >/dev/null 2>&1
+        if [ ! $? == 0 ]
+        then
+          brew cask install --appdir="/Applications" ${CASK}
+        else
+          echo "${CASK} is already installed, skipping."
+        fi
     done
   fi
 
   if [ -e "${BASEPATH}/${KIND}/applists/brew" ]
   then
     echo "Installing ${KIND} brew.."
-    for BREW in $(cat ${BASEPATH}/${KIND}/applists/brew | awk '{print $1}' | grep ^[A-z0-9])
+    for BREW in $(cat ${BASEPATH}/${KIND}/applists/brew | awk '/^[A-z0-9]/ {printf $1" "}')
     do
-        brew install ${BREW}
+        brew list | grep ${BREW} >/dev/null 2>&1
+        if [ ! $? == 0 ]
+        then
+          brew install ${BREW}
+        else
+          echo "${BREW} is already installed, skipping."
+        fi
     done
   fi
 
   if [ -e "${BASEPATH}/${KIND}/applists/mas" ]
   then
     echo "Installing ${KIND} apps from the app store.."
-    for MAS in $(cat ${BASEPATH}/${KIND}/applists/mas | awk '{print $1}' | grep ^[0-9])
+    for MAS in $(cat ${BASEPATH}/${KIND}/applists/mas | awk '/^[0-9]/ {printf $1" "}')
     do
       echo "Installing $(mas info ${MAS} | head -n 1)"
-      mas install "${MAS}"
+      brew mas list | grep ${MAS} >/dev/null 2>&1
+      if [ ! $? == 0 ]
+      then
+        mas install "${MAS}"
+      else
+        echo "${MAS} is already installed, skipping."
+      fi
     done
     echo "Upgrading Apple store apps.."
     mas upgrade
@@ -102,12 +120,10 @@ find /usr/local | sed -e "s#/Con.*\$##" | grep "\.[Aa][Pp][Pp]\$" | uniq >/tmp/a
 while read APP
 do
   NPAPP=$(echo ${APP} | sed -e "s#^/.*/##")
-  if [ -d "/Applications/${NPAPP}" ]
+  if [ ! -d "/Applications/${NPAPP}" ]
   then
-    echo "Replacing /Applications/${NPAPP}"
-    rm -rf "/Applications/${NPAPP}"
+    mv "${APP}" /Applications
   fi
-  mv "${APP}" /Applications
 done </tmp/apps
 rm -f /tmp/apps
 
