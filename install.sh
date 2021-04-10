@@ -43,22 +43,8 @@ fi
 
 for KIND in ${INSTALLTYPE}
 do
-  ### If there are "type" directories, look for casks brew and mas files in them,
+  ### If there are "type" directories, look for brew and mas files in them,
   ### and install them.
-  if [ -e "${BASEPATH}/${KIND}/applists/casks" ]
-  then
-    echo "Installing ${KIND} casks.."
-    for CASK in $(cat ${BASEPATH}/${KIND}/applists/casks | awk '/^[A-z0-9]/ {printf $1" "}')
-    do
-        brew cask list | grep ${CASK} >/dev/null 2>&1
-        if [ ! $? == 0 ]
-        then
-          brew cask install --appdir="/Applications" ${CASK}
-        else
-          echo "${CASK} is already installed, skipping."
-        fi
-    done
-  fi
 
   if [ -e "${BASEPATH}/${KIND}/applists/brew" ]
   then
