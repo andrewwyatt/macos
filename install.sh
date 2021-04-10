@@ -38,7 +38,7 @@ which brew >/dev/null 2>&1
 if [ ! "$?" = 0 ]
 then
   echo "Installing Homebrew.."
-  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
 for KIND in ${INSTALLTYPE}
