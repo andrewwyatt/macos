@@ -39,7 +39,11 @@ if [ ! "$?" = 0 ]
 then
   echo "Installing Homebrew.."
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  (echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> /Users/andrew/.zprofile
 fi
+
+eval "$(/opt/homebrew/bin/brew shellenv)"
+export PATH=${PATH}:/opt/homebrew/bin
 
 for KIND in ${INSTALLTYPE}
 do
@@ -67,10 +71,10 @@ do
     for MAS in $(cat ${BASEPATH}/${KIND}/applists/mas | awk '/^[0-9]/ {printf $1" "}')
     do
       echo "Installing $(mas info ${MAS} | head -n 1)"
-      brew mas list | grep ${MAS} >/dev/null 2>&1
+      /opt/homebrew/bin/mas list | grep ${MAS} >/dev/null 2>&1
       if [ ! $? == 0 ]
       then
-        mas install "${MAS}"
+        /opt/homebrew/bin/mas install "${MAS}"
       else
         echo "${MAS} is already installed, skipping."
       fi
@@ -98,7 +102,7 @@ done
 
 echo "Testing to see if any apps need to be upgraded (when run after installing)."
 brew upgrade
-brew cask upgrade
+brew upgrade --cask
 
 echo "Moving formula based applications to /Applications"
 find /usr/local | sed -e "s#/Con.*\$##" | grep "\.[Aa][Pp][Pp]\$" | uniq >/tmp/apps
